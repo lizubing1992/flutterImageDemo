@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:image_demo/image_cache_manager.dart';
 
 /// @desp:
 /// @time 2019/10/12 16:33
@@ -14,7 +16,9 @@ class NetCacheImage extends StatelessWidget {
 
   NetCacheImage(
       {@required this.imageUrl,
-      this.placeholderWidget = const CircularProgressIndicator(),
+      this.placeholderWidget = const CircularProgressIndicator(
+        strokeWidth: 1.0,
+      ),
       this.errorWidget = const Icon(Icons.error),
       this.imageWidget,
       this.fadeOutDuration = 1,
@@ -24,6 +28,7 @@ class NetCacheImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: imageUrl,
+      cacheManager: ImageCacheManager(),
       imageBuilder:
           imageWidget == null ? null : (context, imageProvider) => imageWidget,
       placeholder: (context, url) => placeholderWidget,
@@ -31,5 +36,22 @@ class NetCacheImage extends StatelessWidget {
       fadeOutDuration: new Duration(seconds: fadeOutDuration),
       fadeInDuration: new Duration(seconds: fadeInDuration),
     );
+  }
+
+  ///提供provider
+  static ImageProvider provider({
+    @required String url,
+    double scale = 1,
+    int width,
+    int height,
+    ErrorListener errorListener,
+    Map<String, String> headers,
+    BaseCacheManager cacheManager,
+  }) {
+    return new CachedNetworkImageProvider(url,
+        errorListener: errorListener,
+        scale: scale,
+        headers: headers,
+        cacheManager: ImageCacheManager());
   }
 }

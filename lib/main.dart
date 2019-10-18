@@ -52,46 +52,34 @@ class MyHomePage extends StatelessWidget {
           children: <Widget>[
             _sizedContainer(
               new Image(
-                image: new CachedNetworkImageProvider(
-                  "http://via.placeholder.com/350x150",
+                image: NetCacheImage.provider(
+                  url:
+                      "http://via.placeholder.com/300x150",
                   errorListener: () {},
                 ),
               ),
             ),
             _sizedContainer(
-              new CachedNetworkImage(
-                placeholder: (context, url) => new CircularProgressIndicator(),
-                imageUrl: "http://via.placeholder.com/200x150",
+              new NetCacheImage(
+                imageUrl:
+                    "https://img.ithome.com/newsuploadfiles/2019/10/20191018_143659_599.jpg",
               ),
             ),
             _sizedContainer(
-              CachedNetworkImage(
-                imageUrl: "http://via.placeholder.com/300x150",
-                imageBuilder: (context, imageProvider) => Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: imageProvider,
-                        fit: BoxFit.fitHeight,
-                        colorFilter:
-                            ColorFilter.mode(Colors.blue, BlendMode.colorBurn)),
-                  ),
-                ),
-                placeholder: (context, url) => CircularProgressIndicator(),
-                errorWidget: (context, url, error) => Icon(Icons.error),
+              NetCacheImage(
+                imageUrl: "https://img.ithome.com/newsuploadfiles/2019/10/20191018_145545_850.jpg@s_2,w_728,h_486%7Cwm_1,k_aW1nL3F3LnBuZw==,y_20,o_100,x_20,g_7",
               ),
             ),
             _sizedContainer(
-              new CachedNetworkImage(
-                imageUrl: "http://10.1.60.41:81/sign/login.htm",
-                placeholder: (context, url) => new CircularProgressIndicator(),
-                errorWidget: (context, url, error) => new Icon(Icons.error),
+              new NetCacheImage(
+                imageUrl: "https://img.ithome.com/newsuploadfiles/2019/10/20191018_145542_519.jpg@s_2,w_728,h_486%7Cwm_1,k_aW1nL3F3LnBuZw==,y_20,o_100,x_20,g_7",
               ),
             ),
-            NetCacheImage(imageUrl: "http://via.placeholder.com/350x200"),
+            NetCacheImage(imageUrl: "https://img.ithome.com/newsuploadfiles/2019/10/20191018_145545_735.jpg@s_2,w_728,h_486%7Cwm_1,k_aW1nL3F3LnBuZw==,y_20,o_100,x_20,g_7"),
             NetCacheImage(imageUrl: "http://10.1.60.41:81/sign/login.htm"),
             NetCacheImage(
                 imageUrl:
-                    "https://pics5.baidu.com/feed/11385343fbf2b2114e3f9cec0d2cf13d0dd78eb5.jpeg?token=05c2b85e4b27488ccb99893537a8e989&s=00F06A22C52616ACAED8E9160100C0C2"),
+                    "https://img.ithome.com/newsuploadfiles/2019/10/20191018_145544_48.jpg@s_2,w_728,h_486%7Cwm_1,k_aW1nL3F3LnBuZw==,y_20,o_100,x_20,g_7"),
           ],
         ),
       ),
